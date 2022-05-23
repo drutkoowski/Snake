@@ -3,8 +3,12 @@ import os
 ALIGNMENT = "center"
 FONT = ("Courier", 24, "normal")
 current_path = os.getcwd()
-with open(f"{current_path}\score.txt", mode="r") as file:
-    HIGHEST_SCORE = int(file.read())
+score_path = current_path + "\score.txt"
+if not os.path.isfile(score_path):
+    HIGHEST_SCORE = 0
+else:
+    with open(f"{current_path}\score.txt", mode="r") as file:
+        HIGHEST_SCORE = int(file.read())
 
 
 class Scoreboard(Turtle):
